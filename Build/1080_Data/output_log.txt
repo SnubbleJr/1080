@@ -1,0 +1,29 @@
+Initialize engine version: 4.5.5p5 (a9cacae7f864)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 660 Ti (ID=0x1183)
+    Vendor:   NVIDIA
+    VRAM:     1989 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.055 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+UnloadTime: 0.258816 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 249.
+Total: 0.776704 ms (FindLiveObjects: 0.014592 ms CreateObjectMapping: 0.006144 ms MarkObjects: 0.094208 ms  DeleteObjects: 0.350976 ms)
+
+Platform assembly: C:\Users\Edward\Documents\GitHub\1080\Build\1080_Data\Managed\Boo.Lang.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
