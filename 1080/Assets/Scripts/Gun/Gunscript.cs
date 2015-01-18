@@ -11,7 +11,10 @@ public class Gunscript : MonoBehaviour {
     public int clipSize = 5;
     public int ammo = 50;
 
-    private int currentClip;
+    public bool hasScope = false; //isn't used in this script, but is used for the main camera
+    public Vector3 defaultPos; //used for pickups
+
+    private int currentClip = 0;
 
     private Transform tip;
     private float rofCounter = 1;
@@ -33,8 +36,16 @@ public class Gunscript : MonoBehaviour {
             this.enabled = false;
         }
 
-        currentClip = clipSize;
+        //on pickup, play pickup animation
+        gun.animation.Play("Picking up");
 	}
+
+    private void pickedUp()
+    {
+        //called at the end of the pickup animation
+        //set the clip size so we can shoot, an eligant way to stop shooting while picking up.
+        currentClip = clipSize;
+    }
 
     void OnGUI()
     {
@@ -46,9 +57,48 @@ public class Gunscript : MonoBehaviour {
 
 	void FixedUpdate () {
 
+        aimGun();
+
+        //sets the rate of fire, but shotting ROF times every second (50 fixed updates)
+        float rofInverse = ROF / 50f;
+
+        rofCounter += rofInverse;
+
+        //if shoot pressed
+        if (Input.GetButton("Fire1") || (Input.GetAxis("Fire1") == 1))
+        {
+            //only shoots when it's 'charged up'
+            //dont by shooting when rof counter has gotten higher than 1
+            //shooting resets counter
+
+            //if bullets in gun
+            if (currentClip > 0)
+            {
+                //if can shoot
+                if (rofCounter >= 1)
+                {
+                    shoot();
+
+                    //set counter back to 0
+                    rofCounter = 0;
+                }
+            }
+            else
+            {
+                playReloadAnim();
+            }
+        }
+
+        //if hit reload && fired bullets
+        if (Input.GetButtonDown("Reload") && currentClip != clipSize)
+            playReloadAnim();
+	}
+
+    void aimGun()
+    {
         //making the gun aim at the centre of the screen
         //it a triangle, the angle the gun needs to turn is tan(the ditance to the target / distance from gun to camera)
-        
+
         //if we are using the normal camera
         if (Camera.main)
         {
@@ -72,57 +122,31 @@ public class Gunscript : MonoBehaviour {
                 Debug.DrawLine(ray.origin, hit.point);
             }
             else
-                //make it return to the cedntre of the screen, also makes it look at the camera funkily
+                //make it return to the centre of the screen, also makes it look at the camera funkily
                 target = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 30));
 
             //smoothing of gun motion
             var targetRotation = Quaternion.LookRotation(target - transform.position);
-       
+
             // Smoothly rotate towards the target point.
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * 5 * Time.deltaTime);
         }
+    }
 
-        //sets the rate of fire, but shotting ROF times every second (50 fixed updates)
-        float rofInverse = ROF/50f;
+    void shoot()
+    {
+        Rigidbody bullet;
+        //spawn bullet
+        bullet = Instantiate(Bullet, tip.transform.position, transform.rotation) as Rigidbody;
+        bullet.velocity = transform.TransformDirection(Vector3.forward * speed);
 
-        rofCounter += rofInverse;
+        currentClip--;
 
-        //only shoots when it's 'charged up'
-        //dont by shooting when rof counter has gotten higher than 1
-        //shooting resets counter
-        
-        //if shoot
-        if (Input.GetButton("Fire1") || (Input.GetAxis("Fire1") == 1))
-        {
-            //if bullets in gun
-            if(currentClip > 0)
-            {
-                //if can shoot
-                if (rofCounter >= 1)
-                {
-                    Rigidbody bullet;
-                    //spawn bullet
-                    bullet = Instantiate(Bullet, tip.transform.position, transform.rotation) as Rigidbody;
-                    bullet.velocity = transform.TransformDirection(Vector3.forward * speed);
+        //play gun shot animation
+        gun.animation.Play("Shooting");
+    }
 
-                    //set counter back to 0
-                    rofCounter = 0;
-
-                    currentClip--;
-                }
-            }
-            else
-            {
-                reloadAnim();
-            }
-        }
-
-        //if hit reload && fired bullets
-        if (Input.GetButtonDown("Reload") && currentClip != clipSize)
-            reloadAnim();
-	}
-
-    void reloadAnim()
+    void playReloadAnim()
     {
         //if any ammo
         if (ammo > 0)
@@ -130,13 +154,13 @@ public class Gunscript : MonoBehaviour {
             currentClip = 0;
 
             //play animation
-            gun.animation.Play("Reload");
+            gun.animation.Play("Reloading");
 
             //reload is called at the end of the animation
         }
     }
 
-    public void reload()
+    public void reloaded()
     {
         int ammoUsed = (clipSize - currentClip);
         //if enough ammo
@@ -150,6 +174,9 @@ public class Gunscript : MonoBehaviour {
             //fill by ammo ammount
             currentClip = ammo;
             ammo = 0;
-        }            
+        }
+
+        //return to idle animation
+        gun.animation.Play("Idle");
     }
 }

@@ -1,0 +1,610 @@
+fileFormatVersion: 2
+guid: 2fdaca5b8d275034fb1c63a11cc522f0
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: barrel
+    100002: barrel_tip_bone
+    100004: Bullet00
+    100006: Bullet005
+    100008: dummy_mag
+    100010: Mag
+    100012: Mag 1
+    100014: Mag001
+    100016: mag_bone
+    100018: //RootNode
+    100020: root_bone
+    100022: scope
+    100024: scope_end_bone
+    100026: ScopeLense
+    100028: stock
+    100030: trigger
+    100032: trigger_bone
+    400000: barrel
+    400002: barrel_tip_bone
+    400004: Bullet00
+    400006: Bullet005
+    400008: dummy_mag
+    400010: Mag
+    400012: Mag 1
+    400014: Mag001
+    400016: mag_bone
+    400018: //RootNode
+    400020: root_bone
+    400022: scope
+    400024: scope_end_bone
+    400026: ScopeLense
+    400028: stock
+    400030: trigger
+    400032: trigger_bone
+    2300000: barrel
+    2300002: Bullet00
+    2300004: Bullet005
+    2300006: Mag 1
+    2300008: Mag001
+    2300010: scope
+    2300012: ScopeLense
+    2300014: stock
+    2300016: trigger
+    3300000: barrel
+    3300002: Bullet00
+    3300004: Bullet005
+    3300006: Mag 1
+    3300008: Mag001
+    3300010: scope
+    3300012: ScopeLense
+    3300014: stock
+    3300016: trigger
+    4300000: Mag
+    4300002: Bullet00
+    4300004: Mag001
+    4300006: Bullet005
+    4300008: stock
+    4300010: barrel
+    4300012: scope
+    4300014: ScopeLense
+    4300016: trigger
+    7400000: Idle
+    7400002: Reloading
+    7400004: Sprint start
+    7400006: Sprinting
+    7400008: Sprint end
+    7400010: Shooting
+    7400012: Picking up
+    7400014: Throwing
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 65
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Reloading
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sprint start
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sprinting
+      takeName: Take 001
+      firstFrame: 45
+      lastFrame: 55
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sprint end
+      takeName: Take 001
+      firstFrame: 55
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shooting
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Picking up
+      takeName: Take 001
+      firstFrame: 80
+      lastFrame: 93
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Throwing
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dummy_mag
+        weight: 1
+      - path: dummy_mag/Bullet005
+        weight: 1
+      - path: dummy_mag/Mag001
+        weight: 1
+      - path: dummy_mag/mag_bone
+        weight: 1
+      - path: Mag
+        weight: 1
+      - path: Mag/Bullet00
+        weight: 1
+      - path: Mag/Mag 1
+        weight: 1
+      - path: root_bone
+        weight: 1
+      - path: root_bone/stock
+        weight: 1
+      - path: root_bone/stock/barrel
+        weight: 1
+      - path: root_bone/stock/barrel/barrel_tip_bone
+        weight: 1
+      - path: root_bone/stock/scope
+        weight: 1
+      - path: root_bone/stock/scope/scope_end_bone
+        weight: 1
+      - path: root_bone/stock/scope/ScopeLense
+        weight: 1
+      - path: root_bone/stock/trigger
+        weight: 1
+      - path: root_bone/stock/trigger/trigger_bone
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

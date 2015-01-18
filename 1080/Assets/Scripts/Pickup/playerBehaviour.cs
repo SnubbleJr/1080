@@ -6,8 +6,17 @@ public class playerBehaviour : MonoBehaviour {
     public int currentHealth = 1080;
     public int health = 1080;
 
+    public GameObject neckSegmentBone;
+
+    private HeadDamageScript headDamageScript;
+
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
+        headDamageScript = neckSegmentBone.GetComponent<HeadDamageScript>();
+
+        //fix head
+        headDamageScript.goHard();
 	
 	}
 
@@ -36,9 +45,11 @@ public class playerBehaviour : MonoBehaviour {
 
         //health boundry checking
         if (currentHealth < (health / 99))
+        {
             //hurt, cripple the neck
             print("ow");
-
+            headDamageScript.goLimp();
+        }
         if (currentHealth <= 0)
         {
             //game over
