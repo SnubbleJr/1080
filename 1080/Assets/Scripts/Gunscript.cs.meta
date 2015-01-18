@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 65d9bd6c21115a643b3ed9212eb288f5
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - gun: {instanceID: 0}
+  - Bullet: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

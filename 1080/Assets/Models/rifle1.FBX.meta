@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: c1ff00df1b3c4044b87c5fd9fadc6de7
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: barrel
+    100002: Bullet00
+    100004: Bullet005
+    100006: Mag
+    100008: Mag 1
+    100010: Mag001
+    100012: Mag001 1
+    100014: //RootNode
+    100016: scope
+    100018: ScopeLense
+    100020: ScopeSight
+    100022: stock
+    100024: Tip
+    100026: trigger
+    400000: barrel
+    400002: Bullet00
+    400004: Bullet005
+    400006: Mag
+    400008: Mag 1
+    400010: Mag001
+    400012: Mag001 1
+    400014: //RootNode
+    400016: scope
+    400018: ScopeLense
+    400020: ScopeSight
+    400022: stock
+    400024: Tip
+    400026: trigger
+    2300000: barrel
+    2300002: Bullet00
+    2300004: Bullet005
+    2300006: Mag 1
+    2300008: Mag001 1
+    2300010: scope
+    2300012: ScopeLense
+    2300014: stock
+    2300016: trigger
+    3300000: barrel
+    3300002: Bullet00
+    3300004: Bullet005
+    3300006: Mag 1
+    3300008: Mag001 1
+    3300010: scope
+    3300012: ScopeLense
+    3300014: stock
+    3300016: trigger
+    4300000: stock
+    4300002: barrel
+    4300004: scope
+    4300006: ScopeLense
+    4300008: trigger
+    4300010: Mag
+    4300012: Bullet00
+    4300014: Mag001
+    4300016: Bullet005
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
