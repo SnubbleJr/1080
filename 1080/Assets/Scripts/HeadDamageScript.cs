@@ -4,28 +4,40 @@ using System.Collections;
 public class HeadDamageScript : MonoBehaviour {
 
     //used to make the head go limb if too much damage hass occured
+    //also makes neck wobble when limp
 
-    Rigidbody rigidbody;
-    Transform originalTrans;
+    ConfigurableJoint joint;
+    CharacterController cc;
 
 	// Use this for initialization
-	void Start () {
-        rigidbody = GetComponent<Rigidbody>();
-        originalTrans = transform;
+	void Start () 
+    {
+        joint = GetComponent<ConfigurableJoint>();
+        
+        cc = transform.root.GetComponent<CharacterController>();
+        
+        goHard();
 	}
+
+    void FixedUpdate()
+    {
+        //movement based wobble
+
+        if (playerBehaviour.goneLimp)
+        {
+            rigidbody.AddTorque(cc.velocity * -5);
+        }
+    }
 	
     public void goLimp()
     {
-        rigidbody.useGravity = true;
-        rigidbody.isKinematic = false;
+        joint.angularXMotion = ConfigurableJointMotion.Limited;
+        joint.angularYMotion = ConfigurableJointMotion.Limited;
     }
 
     public void goHard()
     {
-        rigidbody.useGravity = false;
-        rigidbody.isKinematic = true;
-
-        transform.position = originalTrans.position;
-        transform.rotation = originalTrans.rotation;
+        joint.angularXMotion = ConfigurableJointMotion.Locked;
+        joint.angularYMotion = ConfigurableJointMotion.Locked;
     }
 }

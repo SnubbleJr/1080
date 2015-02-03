@@ -18,6 +18,12 @@ public class GunAnimScript : MonoBehaviour {
         //called by animation event in the pickup animation
         //send pickup message to above
         transform.parent.SendMessage("pickedUp");
+    }
 
+    void throwingEnd()
+    {
+        //called by animation event in the throwing animation
+        //send thrwon message to above
+        SendMessageUpwards("gunThrown");
     }
 }

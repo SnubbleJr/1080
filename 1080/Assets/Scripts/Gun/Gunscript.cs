@@ -5,14 +5,17 @@ public class Gunscript : MonoBehaviour {
 
     public GameObject gun;
     public GameObject gunCrossHair;
-    public Rigidbody Bullet;
+    public Rigidbody bullet;
+    public int gunNumber;
+
     public int ROF = 1;
     public float speed = 1f;
+    public float damage = 0.5f;
     public int clipSize = 5;
     public int ammo = 50;
 
     public bool hasScope = false; //isn't used in this script, but is used for the main camera
-    public Vector3 defaultPos; //used for pickups
+    public Vector3 defaultPos = new Vector3(0.3366699f, -0.2802322f, 0.4769165f); //used for pickups
 
     private int currentClip = 0;
 
@@ -21,7 +24,7 @@ public class Gunscript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    if(Bullet == null)
+	    if(bullet == null)
         {
             Debug.LogError("No bullet given!");
             this.enabled = false;
@@ -135,10 +138,10 @@ public class Gunscript : MonoBehaviour {
 
     void shoot()
     {
-        Rigidbody bullet;
+        Rigidbody shootyBullet;
         //spawn bullet
-        bullet = Instantiate(Bullet, tip.transform.position, transform.rotation) as Rigidbody;
-        bullet.velocity = transform.TransformDirection(Vector3.forward * speed);
+        shootyBullet = Instantiate(bullet, tip.transform.position, transform.rotation) as Rigidbody;
+        shootyBullet.velocity = transform.TransformDirection(Vector3.forward * speed);
 
         currentClip--;
 
@@ -146,7 +149,28 @@ public class Gunscript : MonoBehaviour {
         gun.animation.Play("Shooting");
     }
 
-    void playReloadAnim()
+    public void playTrowingAnim()
+    {
+        gun.animation.Play("Throwing");
+    }
+
+    public void playSprintStartAnim()
+    {
+        gun.animation.Play("Sprint start");
+    }
+    
+    public void playSprintMidAnim()
+    {
+        //queue the mid
+        gun.animation.PlayQueued("Sprinting", QueueMode.CompleteOthers);
+    }
+
+    public void playSprintEndAnim()
+    {
+        gun.animation.Play("Sprint end");
+    }
+
+    public void playReloadAnim()
     {
         //if any ammo
         if (ammo > 0)
@@ -178,5 +202,27 @@ public class Gunscript : MonoBehaviour {
 
         //return to idle animation
         gun.animation.Play("Idle");
+    }
+
+    public void changeStats(GunStats statDelta)
+    {
+        //replacing of gameobjects/rigidbodies
+        if (statDelta.gun != null)
+            gun = statDelta.gun;
+        if (statDelta.gunCrossHair != null)
+            gunCrossHair = statDelta.gunCrossHair;
+        if (statDelta.bullet != null)
+            bullet = statDelta.bullet;
+
+        //updating stats
+        ROF += statDelta.ROF;
+        speed += statDelta.speed;
+        damage += statDelta.damage;
+        clipSize += statDelta.clipSize;
+        ammo += statDelta.ammo;
+        hasScope = statDelta.hasScope;
+
+        if (statDelta.newPos)
+            defaultPos = statDelta.defaultPos;
     }
 }

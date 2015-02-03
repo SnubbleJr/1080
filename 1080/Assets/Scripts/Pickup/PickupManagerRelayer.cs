@@ -23,4 +23,9 @@ public class PickupManagerRelayer : MonoBehaviour {
     {
         pMB.onPickupEnter(pickUp);
     }
+
+    public bool checkIfHasGun()
+    {
+        return pMB.getHasGun();
+    }
 }

@@ -3,25 +3,44 @@ using System.Collections;
 
 public class PickupManagerBehaviour : MonoBehaviour {
 
+    //for when we want to throw the gun
+    public GameObject emptyPickUpContainer;
+
     //need to disable if no gun or no gun with scope
     private ScopeScript scopeScript;
 
     //what sort of scripts pickups can have
     private Gunscript pickUpGunScript;
-    //gun upgrade script
-    //amm script
+    private UpgradeScript pickUpUpgradeScript;
+    
+    private ArrayList currentGunScripts = new ArrayList(); //for us to alter current gun state, like giving it more ammo
 
-    private bool hasGun = false;
+    private playerBehaviour playBehaviour;
 
-    private Gunscript currentGunScript;
+    private GameObject gunPickup;
 
     //manages the players pickups, and enables stuff when hit by it
 
 	// Use this for initialization
 	void Start () {
         scopeScript = this.GetComponent<ScopeScript>();
+
+        playBehaviour = this.GetComponentInParent<playerBehaviour>();
+
+        makeThrowableGunHolder();
 	}
-	
+
+    void makeThrowableGunHolder()
+    {
+        //spawn our pickup so we can move it later
+        gunPickup = Instantiate(emptyPickUpContainer, transform.position, transform.rotation) as GameObject;
+        gunPickup.transform.parent = transform;
+
+        PickupBehaviour pickupBehaviour = gunPickup.GetComponent<PickupBehaviour>();
+        pickupBehaviour.enabled = false;
+        gunPickup.collider.enabled = false;
+    }
+
 	// Update is called once per frame
 	void Update () {
 	}
@@ -30,47 +49,148 @@ public class PickupManagerBehaviour : MonoBehaviour {
     {
         //the pickup has sent us the prefab it was holding
 
-        if(pickUp.tag == "Gun")
+        switch (pickUp.tag)
         {
-            //we have found a gun
-            pickUpGunScript = pickUp.GetComponent<Gunscript>();
+            case "Gun":
+                addGun(pickUp);
+                break;
 
-            //reenable the gunscript
-            pickUpGunScript.enabled = true;
+            case "Upgrade":
+                parseUpgrade(pickUp);
+                break;
+        }
 
-            //only pick up if we don't already ahve one
-            if (!hasGun)
+        print("we have a " + pickUp.gameObject.name);
+    }
+    
+    private void addGun(GameObject pickUp)
+    { 
+        //we have found a gun
+        pickUpGunScript = pickUp.GetComponent<Gunscript>();
+
+        //reenable the gunscript
+        pickUpGunScript.enabled = true;
+        
+        Gunscript currentGunScript = null;
+
+        //only pick up if we don't already ahve this gun
+        foreach (Gunscript gunScript in currentGunScripts)
+        {
+            if (gunScript.gunNumber == pickUpGunScript.gunNumber)
+                currentGunScript = gunScript;
+        }
+
+        if (currentGunScript == null)
+        {
+            //let's pick it up!
+            pickUp.transform.parent = gunPickup.transform;
+            pickUp.transform.localPosition = pickUpGunScript.defaultPos;
+            
+            //update state of script, scope and gun
+
+            currentGunScripts.Add(pickUpGunScript);
+
+            currentGunScript = pickUpGunScript;
+
+            //need to disable scope script unless we have gun with scope
+            if (currentGunScript.hasScope)
             {
-                //let's pick it up!
-                pickUp.transform.parent = this.transform;
-                pickUp.transform.localPosition = pickUpGunScript.defaultPos;
-
-                //update state of script, scope and gun
-
-                currentGunScript = pickUpGunScript;
-                hasGun = true;
-
-                //need to disable scope script unless we have gun with scope
-                if (currentGunScript.hasScope)
-                {
-                    scopeScript.enabled = true;
-                }
-                else
-                {
-                    scopeScript.enabled = false;
-                }
+                scopeScript.enabled = true;
             }
-            //else just take its ammo and delete it
-            //maybe unless we have duel weilding?
-            //need to add that in
             else
             {
-                currentGunScript.ammo += pickUpGunScript.ammo;
-                Destroy(pickUp);
+                scopeScript.enabled = false;
             }
 
-
+            //inform the player behaviour of our new gun
+            playBehaviour.addGunScripts(currentGunScript);
         }
-        print("we have a " + pickUp.gameObject.name);
+        //else just take its ammo and delete it
+        //maybe unless we have duel weilding?
+        //need to add that in
+        else
+        {
+            currentGunScript.ammo += pickUpGunScript.ammo;
+            Destroy(pickUp);
+        }
+    }
+    
+    private void parseUpgrade(GameObject pickUp)
+    {
+        //we have found a gun
+        pickUpUpgradeScript = pickUp.GetComponent<UpgradeScript>();
+        
+        //apply upgrades
+
+        //player upgrades
+        if (pickUpUpgradeScript.isAPlayerUpgrade == true)
+        {
+            playBehaviour.changeStats(pickUpUpgradeScript.playerUpgrade);
+        }
+
+        //gun upgrades
+        if (pickUpUpgradeScript.isAGunUpgrade == true)
+        {
+            foreach (Gunscript gunScript in currentGunScripts)
+            {
+                gunScript.changeStats(pickUpUpgradeScript.gunUpgrade);
+            }
+        }
+
+    }
+
+    //called from throwing animation, make a pickup for our gun
+    //by deparenting it, and wrapping it into a new pickup object
+    //and add some force to it
+    public void gunThrown()
+    {
+        //disabling our current gun - if the player can't turret, else, they can still fire while on floor!
+
+        if (!playBehaviour.getCanTurret())
+        {
+            foreach (Gunscript gunScript in currentGunScripts)
+            {
+                gunScript.enabled = false;
+            }
+        }
+
+        PickupBehaviour pickupBehaviour = gunPickup.GetComponent<PickupBehaviour>();
+        pickupBehaviour.enabled = true;
+        gunPickup.collider.enabled = false;
+        
+        //deparenting and exploding it
+        gunPickup.transform.parent = null;
+        gunPickup.rigidbody.isKinematic = false;
+        gunPickup.rigidbody.useGravity = true;
+
+        foreach (Gunscript gunScript in currentGunScripts)
+        {
+            //set animaiton to idle
+            gunScript.gun.animation.Play("Idle");
+
+            //moving gun to the centre of the pickup
+            gunScript.gameObject.transform.localPosition = Vector3.zero;
+
+
+            CapsuleCollider gunCollider = gunPickup.AddComponent<CapsuleCollider>();
+            gunCollider.direction = 2;
+            gunCollider.height = 1.5f;
+            Physics.IgnoreCollision(gunCollider, transform.root.collider);
+
+            //explosion is offset to be relatively behind the gun
+            gunCollider.rigidbody.AddExplosionForce(3000.0f, (transform.position - (gunPickup.transform.forward * 10f)), 20.0f, 3.0f);
+            
+        }
+        
+        //clear currentgunscript list
+        currentGunScripts.Clear();
+
+        //spawn new throwable gun holder
+        makeThrowableGunHolder();
+    }
+
+    public bool getHasGun()
+    {
+        return (currentGunScripts.Count > 0);
     }
 }
