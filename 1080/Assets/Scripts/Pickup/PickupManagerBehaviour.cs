@@ -189,8 +189,25 @@ public class PickupManagerBehaviour : MonoBehaviour {
         makeThrowableGunHolder();
     }
 
+    //called by relayer, generates a copy of the first gun in gunscripts (if any) 
+    public GameObject getCurrentGun()
+    {
+        if (currentGunScripts.Count <= 0)
+            return null;
+
+        Gunscript gunScript = (Gunscript)currentGunScripts[0];
+        GameObject gun = gunScript.gameObject as GameObject;
+        
+        return gun;
+    }
+
+    public int getGunScriptCount()
+    {
+        return currentGunScripts.Count;
+    }
+
     public bool getHasGun()
     {
-        return (currentGunScripts.Count > 0);
+        return (getGunScriptCount() > 0);
     }
 }

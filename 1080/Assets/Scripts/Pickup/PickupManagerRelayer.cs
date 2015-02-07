@@ -24,6 +24,17 @@ public class PickupManagerRelayer : MonoBehaviour {
         pMB.onPickupEnter(pickUp);
     }
 
+    //called by pickup spawner to get a copy of the first current gun
+    public GameObject getCurrentGun()
+    {
+        return pMB.getCurrentGun();
+    }
+
+    public int getGunScriptCount()
+    {
+        return pMB.getGunScriptCount();
+    }
+
     public bool checkIfHasGun()
     {
         return pMB.getHasGun();
