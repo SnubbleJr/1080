@@ -73,13 +73,14 @@ public class PickupManagerBehaviour : MonoBehaviour {
         
         Gunscript currentGunScript = null;
 
-        //only pick up if we don't already ahve this gun
+        //only pick up if we don't already have this gun
         foreach (Gunscript gunScript in currentGunScripts)
         {
             if (gunScript.gunNumber == pickUpGunScript.gunNumber)
                 currentGunScript = gunScript;
         }
 
+        //is a new gun
         if (currentGunScript == null)
         {
             //let's pick it up!
@@ -87,9 +88,11 @@ public class PickupManagerBehaviour : MonoBehaviour {
             pickUp.transform.localPosition = pickUpGunScript.defaultPos;
             
             //update state of script, scope and gun
-
+            
+            //add gun to current gun array list
             currentGunScripts.Add(pickUpGunScript);
 
+            //set current gun script
             currentGunScript = pickUpGunScript;
 
             //need to disable scope script unless we have gun with scope
@@ -197,6 +200,16 @@ public class PickupManagerBehaviour : MonoBehaviour {
 
         Gunscript gunScript = (Gunscript)currentGunScripts[0];
         GameObject gun = gunScript.gameObject as GameObject;
+        
+        //find the scope camera and rt, and deactivate it
+
+        foreach (Transform child in gun.transform)
+        {
+            if (child.CompareTag("ScopeCamera"))
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
         
         return gun;
     }

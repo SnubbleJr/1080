@@ -10,13 +10,14 @@ public class playerBehaviour : MonoBehaviour {
     //static so head scripts can find it
     public static bool goneLimp = false;
 
+    public bool canGunRun = false;
+    public bool canTurret = false;
+
     private GameObject playerCamera;
 
     private CharacterMotor characterMotor;
     private ArrayList gunScripts = new ArrayList();
-    public bool canGunRun = false;
-    public bool canTurret = false;
-
+    
 	// Use this for initialization
     void Start()
     {

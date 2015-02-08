@@ -21,7 +21,12 @@ public class PickupSpawner : MonoBehaviour {
             this.enabled = false;
         }
 
-        InvokeRepeating("spawnPickup", 5, 5);
+        InvokeRepeating("spawnPickup1", 5, 5);
+    }
+
+    void spawnPickup1()
+    {
+        spawnPickup(transform);
     }
 
     public void spawnPickup(Transform location)
@@ -35,7 +40,7 @@ public class PickupSpawner : MonoBehaviour {
 
         //random numbers to decide if to make a pickup
         //if we get an 8 (because 8's are awesome) spawn
-        if ((int)Random.Range(0, rngChance) == 8)
+        if ((int)Random.Range(0, rngChance) != 8)
         {
             //random number to decide what to spawn
             int spawnNo = (int)Random.Range(0, 2);
@@ -43,6 +48,7 @@ public class PickupSpawner : MonoBehaviour {
             switch(spawnNo)
             {
                 case 0:
+                    print("gunTime");
                     //make a gun - spawn gun if we already have one
                     if (pMR.checkIfHasGun())
                         pickupContent = createGunPickup();
@@ -55,9 +61,16 @@ public class PickupSpawner : MonoBehaviour {
                     break;
 
                 default:
+                    print("pickupTime");
                     pickupContent = createUpgradePickup();
                     break;
             }            
+        }
+        else
+        {
+            //else, don't make anything
+            Destroy(pickup);
+            return;
         }
 
         pickupContent.transform.parent = pickup.transform;
